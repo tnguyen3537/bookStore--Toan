@@ -1,25 +1,37 @@
 package Bookstore.domain;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
+@Entity
 public class Book {
-	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long id;
 	private int isbn;
-	private int year;
-	private int price;
-	private String title;
-	private String author;
-	
+	private String title, author;
+	private int bookYear, price;
+
 	public Book() {
-		super();
-		// TODO Auto-generated constructor stub
 	}
 
-	public Book(int isbn, int year, int price, String title, String author) {
+	public Book(int isbn, String title, String author, int bookYear, int price) {
 		super();
 		this.isbn = isbn;
-		this.year = year;
-		this.price = price;
 		this.title = title;
 		this.author = author;
+		this.bookYear = bookYear;
+		this.price = price;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public int getIsbn() {
@@ -28,22 +40,6 @@ public class Book {
 
 	public void setIsbn(int isbn) {
 		this.isbn = isbn;
-	}
-
-	public int getYear() {
-		return year;
-	}
-
-	public void setYear(int year) {
-		this.year = year;
-	}
-
-	public int getPrice() {
-		return price;
-	}
-
-	public void setPrice(int price) {
-		this.price = price;
 	}
 
 	public String getTitle() {
@@ -60,15 +56,29 @@ public class Book {
 
 	public void setAuthor(String author) {
 		this.author = author;
+
+	}
+
+	public int getbookYear() {
+		return bookYear;
+	}
+
+	public void setYear(int year) {
+		this.bookYear = year;
+	}
+
+	public int getPrice() {
+		return price;
+	}
+
+	public void setPrice(int price) {
+		this.price = price;
 	}
 
 	@Override
 	public String toString() {
-		return "Book [isbn=" + isbn + ", year=" + year + ", price=" + price + ", title=" + title + ", author=" + author
-				+ "]";
+		return "Book [id=" + id + ", isbn=" + isbn + ", title=" + title + ", author=" + author + ", year=" + bookYear
+				+ ", price=" + price + "]";
 	}
-	
-	
-	
 
 }
