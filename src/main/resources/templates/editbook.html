@@ -3,27 +3,35 @@
 <head>
 <title>Edit Book</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css"
+	th:href="@{css/bootstrap.min.css}" />
 </head>
 
 <body>
 	<h1>Edit Book</h1>
 	<div>
-		<form th:object="${book}" th:action="@{save}" action="#" method="post">
+		<form th:object="${book}" th:action="@{../save}" action="#" method="post">
+			<input type="hidden" id="id" th:field="*{id}" />
 		  	<label for="isbn">ISBN</label>
-			<input type="number" id="isbn" th:field="*{isbn}" />
+			<input type="number" id="isbn" th:field="*{isbn}" required/>
 			<div style="clear: both; display: block; height: 10px;"></div>
 		  	<label for="title">Title</label>
-			<input type="text" id="title" th:field="*{title}" />
+			<input type="text" id="title" th:field="*{title}" required/>
 			<div style="clear: both; display: block; height: 10px;"></div>
 		  	<label for="author">Author</label>
-			<input type="text" th:field="*{author}" />
+			<input type="text" th:field="*{author}" required/>
 			<div style="clear: both; display: block; height: 10px;"></div>
-			
 			<label for="title">Book Year</label>
-			<input type="number" id="bookyear" th:field="*{bookyear}" />
+			<input type="number" id="bookyear" th:field="*{bookyear}" required/>
 			<div style="clear: both; display: block; height: 10px;"></div>
-		  	<label for="price">Price</label>
-			<input type="number" th:field="*{price}" />
+			<label for="title">Category</label>
+			<select id="catlist" th:field="*{category}" class="form-control">
+				<option th:each="category: ${categories}"
+					th:value="${category.getcid()}" th:text="${category.getcName()}"></option>
+			</select>
+			<div style="clear: both; display: block; height: 10px;"></div>
+		  	<label for="price">Price(USD)</label>
+			<input type="number" step="any" th:field="*{price}" required/>
 			<div style="clear: both; display: block; height: 10px;"></div>
 			
 			<input type="submit" value="Update"></input>
