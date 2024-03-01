@@ -2,6 +2,8 @@ package Bookstore.domain;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -16,11 +18,13 @@ public class Category {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long cid;
 	private String cName;
+
+	@JsonIgnore
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "category")
 	private List<Book> books;
 
 	public Category() {
-		// TODO Auto-generated constructor stub
+	
 	}
 
 	public Category(String cName) {
