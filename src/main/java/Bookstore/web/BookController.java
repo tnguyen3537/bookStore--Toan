@@ -20,10 +20,17 @@ import Bookstore.domain.Book;
 
 @Controller
 public class BookController {
+
 	@Autowired
 	private BookRespository repository;
 	@Autowired
 	private CategoryRepository crepository;
+
+	// Show all students
+    @RequestMapping(value="/login")
+    public String login() {	
+        return "login";
+    }	
 
 	@GetMapping(value={"/","booklist"})
 	public String getInfo(Model model) {
@@ -31,7 +38,7 @@ public class BookController {
 		return "booklist";
 	}
 
-	@PreAuthorize("hasRole('ADMIN')")
+	@PreAuthorize("hasAuthority('ADMIN')")
 	@GetMapping(value = "/delete/{id}")
 	public String deleteBook(@PathVariable("id") Long bookId, Model model) {
 		repository.deleteById(bookId);
