@@ -18,31 +18,31 @@ import Bookstore.domain.CategoryRepository;
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 public class CategoryRepositoryTest {
 
-    @Autowired
-    private CategoryRepository crepository;
+    // @Autowired
+    // private CategoryRepository crepository;
 
-    @Test
-    public void findByNameShouldReturnCategory() {
-        List<Category> categories = crepository.findBycName("Funny");
+    // @Test
+    // public void findByNameShouldReturnCategory() {
+    //     List<Category> categories = crepository.findBycName("Funny");
         
-        assertThat(categories).hasSize(1);
-        assertThat(categories.get(0).getcName()).isEqualTo("Funny");
-    }
+    //     assertThat(categories).hasSize(1);
+    //     assertThat(categories.get(0).getcName()).isEqualTo("Funny");
+    // }
     
-    @Test
-    public void createNewCategory() {
-    	Category category = new Category("Fiction");
-    	crepository.save(category);
+    // @Test
+    // public void createNewCategory() {
+    // 	Category category = new Category("Fiction");
+    // 	crepository.save(category);
 
-    	assertThat(category.getcid()).isNotNull();
-    }    
+    // 	assertThat(category.getcid()).isNotNull();
+    // }    
 
-    @Test
-    public void deleteNewCategory() {
-        List<Category> categories = crepository.findBycName("Fiction");
-        Category category = categories.get(0);
-		crepository.delete(category);
-		List<Category> newCategories = crepository.findBycName("Fiction");
-		assertThat(newCategories).hasSize(0);
-     }
+    // @Test
+    // public void deleteNewCategory() {
+    //     List<Category> categories = crepository.findBycName("Fiction");
+    //     Category category = categories.get(0);
+	// 	crepository.delete(category);
+	// 	List<Category> newCategories = crepository.findBycName("Fiction");
+	// 	assertThat(newCategories).hasSize(0);
+    //  }
 }

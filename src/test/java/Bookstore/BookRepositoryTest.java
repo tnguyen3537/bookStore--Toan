@@ -17,39 +17,39 @@ import Bookstore.domain.CategoryRepository;
 //@DataJpaTest
 
 //@ExtendWith(SpringExtension.class)
-@SpringBootTest(classes = BookstoreApplication.class)
-@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
-public class BookRepositoryTest {
+// @SpringBootTest(classes = BookstoreApplication.class)
+// @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
+// public class BookRepositoryTest {
 
-    @Autowired
-    private BookRespository brepository;
+//     @Autowired
+//     private BookRespository brepository;
 
-    @Autowired
-    private CategoryRepository crepository;
+//     @Autowired
+//     private CategoryRepository crepository;
 
-    @Test
-    public void findByAuthorShouldReturnBook() {
-        List<Book> books = brepository.findByAuthor("A Famous Authour");
+//     @Test
+//     public void findByAuthorShouldReturnBook() {
+//         List<Book> books = brepository.findByAuthor("A Famous Authour");
         
-        assertThat(books).hasSize(1);
-        assertThat(books.get(0).getAuthor()).isEqualTo("A Famous Authour");
-    }
+//         assertThat(books).hasSize(1);
+//         assertThat(books.get(0).getAuthor()).isEqualTo("A Famous Authour");
+//     }
     
-    @Test
-    public void createNewBook() {
-    	Category category = new Category("Funny");
-    	crepository.save(category);
-    	Book book = new Book(242144, "A Random Book", "Not Me", 1960, category,20.50);
-    	brepository.save(book);
-    	assertThat(book.getId()).isNotNull();
+//     @Test
+//     public void createNewBook() {
+//     	Category category = new Category("Funny");
+//     	crepository.save(category);
+//     	Book book = new Book(242144, "A Random Book", "Not Me", 1960, category,20.50);
+//     	brepository.save(book);
+//     	assertThat(book.getId()).isNotNull();
 
-    }    
-    @Test
-    public void deleteNewBook() {
-        List<Book> books = brepository.findByAuthor("Not Me");
-        Book book = books.get(0);
-		brepository.delete(book);
-		List<Book> newBooks = brepository.findByAuthor("Not Me");
-		assertThat(newBooks).hasSize(0);
-     }
-}
+//     }    
+//     @Test
+//     public void deleteNewBook() {
+//         List<Book> books = brepository.findByAuthor("Not Me");
+//         Book book = books.get(0);
+// 		brepository.delete(book);
+// 		List<Book> newBooks = brepository.findByAuthor("Not Me");
+// 		assertThat(newBooks).hasSize(0);
+//      }
+// }

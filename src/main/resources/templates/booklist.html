@@ -12,10 +12,16 @@
 	<div class="col-md-4" style="float: right; padding:20px 0">
 
 		<form th:action="@{/logout}" method="post">
-			<span sec:authentication="name" ; style="font-weight:bold;">Name </span> <input type="submit"
-				value="Sign Out" class="btn btn-sm btn-danger" />
+			<span sec:authentication="name"; style="font-weight:bold;"> Name</span> 
+			<input type="submit" value="Sign Out" class="btn btn-sm btn-danger" />
 		</form>
 	</div>
+
+	<div class="col-md-4">
+        <span  sec:authentication="principal.username">Name</span>
+		
+	</div>
+
 	<div class="container">
 		<div class="col-md-4">
 			<h1>My Books</h1>
