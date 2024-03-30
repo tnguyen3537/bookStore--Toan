@@ -3,7 +3,6 @@ package Bookstore.domain;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name="UserTable")
 public class AppUser {
   
      @Id
